@@ -1,0 +1,12 @@
+.stat{
+    background-color: none;
+    border:none;
+    background:none;
+    font-size: 15pt;
+}
+.scc{
+    color: green;
+}
+.err{
+    color: red;
+}
