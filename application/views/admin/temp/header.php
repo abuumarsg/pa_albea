@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard 3</title>
+  <title><?php  echo $this->libgeneral->titlePages($this->uri->segment(2)); ?> ALBEA </title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="<?php echo base_url('asset/plugins/fontawesome-free/css/all.min.css')?>">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url('asset/dist/css/adminlte.min.css')?>">
   <link rel="stylesheet" href="<?php echo base_url('asset/dist/css/style.css')?>">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+  <link rel="icon" href="<?php echo base_url('asset/dist/img/AdminLTELogo.png');?>" type="image/png">
 </head>
 <body class="hold-transition sidebar-mini">
   
@@ -146,33 +149,8 @@
       </li> -->
       <li class="nav-item dropdown user user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <img src="<?php echo base_url('assets/dist/img/AdminLTELogo.png'); ?>" class="user-image" alt="User Image">
-          <span class="hidden-xs"></span>
-        </a>
-        <ul class="dropdown-menu" style="width: 350px;">
-          <!-- User image -->
-          <li class="user-header">
-            <img src="<?php echo base_url('assets/dist/img/AdminLTELogo.png'); ?>" class="brand-image img-circle elevation-3" alt="User Image">
-            <p>
-              <small></small>
-              <small></small>
-            </p>
-          </li>
-          <!-- Menu Footer-->
-          <li class="user-footer">
-            <div class="pull-left">
-              <a href="<?php echo base_url('kpages/profile');?>" class="btn btn-flat btn-success"><i class="fa fa-user"></i> Profile</a>
-            </div>
-            <div class="pull-right">
-              <a href="<?php echo base_url('controllers/auth.php?p=logout');?>" class="btn btn-flat btn-danger">Log Out <i class="fa fa-sign-out"></i></a>
-            </div>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fas fa-cogs"></i>
-          <!-- <span class="badge badge-warning navbar-badge">15</span> -->
+          <img src="<?php echo base_url('asset/dist/img/user8-128x128.jpg'); ?>" class="user-image" alt="User Image">
+          <span class="hidden-xs"><?=$adm['nama']?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
@@ -192,6 +170,32 @@
           <div class="dropdown-divider"></div>
             <a href="<?php echo base_url('pages/profile');?>" class="dropdown-item dropdown-footer btn btn-success btn-sm"><i class="fa fa-user"></i> Profile</a>
             <a href="<?php echo base_url('auth/logout');?>" class="dropdown-item dropdown-footer btn btn-danger btn-sm"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-cogs"></i>
+          <!-- <span class="badge badge-warning navbar-badge">15</span> -->
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">Setting Aplikasi</span>
+          <div class="dropdown-divider"></div>
+          <a href="<?php echo base_url('pages/setting_admin');?>" class="dropdown-item">
+            <i class="fas fa-user mr-2"></i> Data Admin
+            <span class="float-right text-muted text-sm"></span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<?php echo base_url('pages/setting_user_group');?>" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> User Group
+            <span class="float-right text-muted text-sm"></span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<?php echo base_url('pages/setting_menu');?>" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> Master Menu
+            <span class="float-right text-muted text-sm"></span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <!-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> -->
         </div>
       </li>
     </ul>

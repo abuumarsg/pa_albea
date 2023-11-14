@@ -351,4 +351,42 @@ class Libgeneral {
         $pack=$ex;
         return $pack;
     }
+    public function getLevelAdminList($val=null)
+    {
+		if($val == null){
+            $pack=[
+                0=>'Level Tertinggi',
+                1=>'Level 1',
+                2=>'Level 2',
+                3=>'Level 3',
+                4=>'Level 4',
+            ];
+        }
+		if($val != null){
+			$pack=[
+				1=>'Level 1',
+				2=>'Level 2',
+				3=>'Level 3',
+                4=>'Level 4',
+			];
+		}
+        return $pack;
+    }
+    public function getLevelAdmin($key)
+    {
+        return $this->getVarFromArrayKey($key,$this->getLevelAdminList());
+    }
+    public function titlePages($uri)
+    {
+        if (empty($uri))
+           return null;
+       $new_val=null;
+       $ex=explode('_', $uri);
+       if (count($ex) > 0) {
+           $new_val=implode(' ', $ex);
+       }else{
+           $new_val=$uri;
+       }
+       return ucwords(strtolower($new_val)).' | ';
+    }
 }

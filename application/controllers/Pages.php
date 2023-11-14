@@ -81,4 +81,28 @@ class Pages extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('auth');
 	}
+	public function setting_admin(){
+		$data=[
+			'access'=>$this->access,
+		];
+		// $this->load->view('admin/temp/head');
+		$this->load->view('admin/temp/header', $this->dtroot);
+		$this->load->view('admin/temp/sidebar', $this->dtroot);
+		$this->load->view('admin/setting_admin', $data);
+		$this->load->view('admin/temp/footer', $this->dtroot);
+	}
+	public function setting_user_group(){
+		// $this->load->view('admin/temp/head');
+		$this->load->view('admin/temp/header', $this->dtroot);
+		$this->load->view('admin/temp/sidebar', $this->dtroot);
+		$this->load->view('admin/setting_user_group');
+		$this->load->view('admin/temp/footer', $this->dtroot);
+	}
+	public function setting_menu(){
+		// $this->load->view('admin/temp/head');
+		$this->load->view('admin/temp/header', $this->dtroot);
+		$this->load->view('admin/temp/sidebar', $this->dtroot);
+		$this->load->view('admin/setting_menu');
+		$this->load->view('admin/temp/footer', $this->dtroot);
+	}
 }

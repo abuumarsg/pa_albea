@@ -44,4 +44,15 @@ class Model_admin extends CI_Model
 		}
 		return $query;
 	}
+	public function getListAdmin()
+	{
+		$where=['a.id_admin !='=>1];
+		$this->db->select('a.*,b.nama as nama_group');
+		$this->db->from('admin AS a');
+		$this->db->join('master_user_group AS b', 'b.id_group = a.id_group', 'left'); 
+		$this->db->order_by('update_date','DESC');
+		$this->db->where($where); 
+		$query=$this->db->get()->result();
+		return $query;
+	}
 }
