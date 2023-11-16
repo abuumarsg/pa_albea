@@ -99,10 +99,10 @@ class Libgeneral {
         $status=null;
         $delete=null;
         if (isset($val['create'])) {
-            $create=$val['create'];//$this->CI->formatter->getDateTimeMonthFormatUser($val['create']);
+            $create=$this->getDateTimeMonthFormatUser($val['create']);
         }
         if (isset($val['update'])) {
-            $update=$val['update'];//$this->CI->formatter->getDateTimeMonthFormatUser($val['update']);
+            $update=$this->getDateTimeMonthFormatUser($val['update']);
         }
         // '<span class="badge badge-success">Success</span>'
         $tanggal='<span class="badge badge-warning" data-toggle="tooltip" title="Dibuat Tanggal""><i class="fas fa-pen fa-fw"></i>'.$create.' WIB</span><br><span class="badge badge-primary" data-toggle="tooltip" title="Diupdate Tanggal"><i class="fa fa-edit fa-fw"></i> '.$update.' WIB </span>';
@@ -388,5 +388,17 @@ class Libgeneral {
            $new_val=$uri;
        }
        return ucwords(strtolower($new_val)).' | ';
+    }
+    public function getGenderList()
+    {
+        $pack=[
+            'l'=>'Laki - Laki',
+            'p'=>'Perempuan'
+        ];
+        return $pack;
+    }
+    public function getGender($key)
+    {
+        return $this->getVarFromArrayKey($key,$this->getGenderList());
     }
 }

@@ -133,47 +133,47 @@ function submitAjax(urlx, modalx, formx, url_kode, idf_kode, usage,notif) {
 				}
 			} else {
 				if (data.status_data == true) {
-					$('#' + modalx).modal('toggle');
-				}
-			}
-			if (data.status_data == true) {
-				if (usage == 'auth') {
-					$('.login-box').notify(data.msg, {position: "top center", className: "success"});
-				}else{
-					$.notify(data.msg, {position: "top center", className: "success"});
-				}
-			} else if (data.status_data == 'warning') {
-				$("body").overhang({
-					type: "warn",
-					message: data.msg,
-					html: true
-				});
-			} else if (data.status_data == 'no_msg') {
-				return false;
-			} else {
-				if (data.msg != null) {
+					if (usage == 'auth') {
+						$('.login-box').notify(data.msg, {position: "top center", className: "success"});
+					}else{
+						$.notify(data.msg, {position: "top center", className: "success"});
+						if (modalx !== null) {
+							$('#' + modalx).modal('toggle');
+						}
+					}
+				} else if (data.status_data == 'warning') {
 					$("body").overhang({
-						type: "error",
+						type: "warn",
 						message: data.msg,
 						html: true
 					});
+				} else if (data.status_data == 'no_msg') {
+					return false;
 				} else {
-					if (data.msg == null) {
-						if(notif == 'no'){
-							return false;
+					if (data.msg != null) {
+						$("body").overhang({
+							type: "error",
+							message: data.msg,
+							html: true
+						});
+					} else {
+						if (data.msg == null) {
+							if(notif == 'no'){
+								return false;
+							}else{
+								$("body").overhang({
+									type: "success",
+									message: 'OK! Berhasil',
+									html: true
+								});
+							}
 						}else{
 							$("body").overhang({
-								type: "success",
-								message: 'OK! Berhasil',
+								type: "error",
+								message: fail + 'Invalid Parameter',
 								html: true
 							});
 						}
-					}else{
-						$("body").overhang({
-							type: "error",
-							message: fail + 'Invalid Parameter',
-							html: true
-						});
 					}
 				}
 			}
