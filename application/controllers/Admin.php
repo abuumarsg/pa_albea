@@ -56,7 +56,7 @@ class Admin extends CI_Controller
 					$datax['data'][]=[
 						$d->id_admin,
 						$d->nama,
-						$d->email,
+						$d->username,
 						$d->nama_group,
 						($d->last_login == '0000-00-00 00:00:00')?'<label class="label label-danger">Belum Pernah Login</label>':$this->libgeneral->getDateTimeMonthFormatUser($d->last_login).' WIB',
 						$this->libgeneral->getLevelAdmin($d->level),
@@ -113,38 +113,40 @@ class Admin extends CI_Controller
 	function add_admin(){
 		if (!$this->input->is_ajax_request()) 
 			redirect('not_found');
-		$emp=$this->input->post('employee');
-		if (!isset($emp)) {
-			$datax=$this->messages->notValidParam(); 
-		}else{
-			$ug=$this->input->post('u_group');
-			$lv=$this->input->post('level');
-			foreach ($emp as $e) {
-				$kar=$this->model_karyawan->getEmployeeId($e);
-				if (isset($kar)) {
-					$data=array(
-						'nama'=>$kar['nama'],
-						'alamat'=>$kar['alamat_sekarang_jalan'].','.$kar['alamat_sekarang_desa'].','.$kar['alamat_sekarang_kecamatan'].','.$kar['alamat_sekarang_kabupaten'].','.$kar['alamat_sekarang_provinsi'].','.$kar['alamat_sekarang_pos'],
-						'email'=>$kar['email'],
-						'username'=>$kar['nik'],
-						'password'=>$kar['password'],
-						'foto'=>$kar['foto'],
-						'hp'=>$kar['no_hp'],
-						'id_karyawan'=>$e,
-						'email_verified'=>$kar['email_verified'],
-						'id_group'=>$ug,
-						'level'=>$lv,
-						'status_adm'=>1,
-					);
-					$data=array_merge($data,$this->model_global->getCreateProperties($this->admin));
-					$datax=$this->model_global->insertQuery($data,'admin');
+		$nama = $this->input->post('nama');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$retype_password = $this->input->post('retype_password');
+		$u_group = $this->input->post('u_group');
+		if($password == $retype_password){
+			if (!isset($nama)) {
+				$datax=$this->messages->notValidParam(); 
+			}else{
+				$data=array(
+					'nama'=>$nama,
+					'alamat'=>null,
+					'email'=>null,
+					'username'=>$username,
+					'password'=>hash('sha512', $password),
+					'foto'=>null,
+					'hp'=>null,
+					'id_karyawan'=>null,
+					'email_verified'=>null,
+					'id_group'=>$u_group,
+					'level'=>null,
+					'status_adm'=>1,
+					'level'=>$this->input->post('level'),
+				);
+				$data=array_merge($data, $this->model_global->getCreateProperties($this->admin));
+				$datax=$this->model_global->insertQuery($data,'admin');
+				if (isset($datax)) {
+					$datax=$datax;	
+				}else{
+					$datax=$this->messages->notValidParam();
 				}
 			}
-			if (isset($datax)) {
-				$datax=$datax;	
-			}else{
-				$datax=$this->messages->notValidParam();
-			}
+		}else{
+			$datax=$this->messages->customFailure('Password Tidak sama');
 		}
 		echo json_encode($datax);
 	}

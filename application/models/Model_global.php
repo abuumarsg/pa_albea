@@ -515,4 +515,26 @@ class Model_global extends CI_Model
 		];
 		return $new_val;
 	}
+	public function getDataSelect($table, $sort=null, $s_val=null)
+	{
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->where('status',1);
+		if(!empty($sort) && !empty($s_val)){
+			$this->db->order_by($sort,$s_val);
+		}
+		$query=$this->db->get()->result();
+		return $query;
+	}
+	public function listActiveRecord($table,$key,$val,$sort=null,$s_val=null)
+	{
+		if (empty($table) || empty($key) || empty($val)) 
+			return null;
+		$pack=[];
+		$data=$this->getDataSelect($table, $sort, $s_val);
+		foreach ($data as $d) {
+			$pack[$d->$key]=$d->$val;
+		}
+		return $pack;
+	}
 }

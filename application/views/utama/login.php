@@ -1,7 +1,7 @@
 <div class="login-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="<?php echo base_url('index2.html')?>" class="h1"><b>My</b>Payroll</a>
+      <a href="<?php echo base_url('index2.html')?>" class="h1"><b>PA</b> ALBEA</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>

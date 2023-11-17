@@ -33,8 +33,8 @@ class Model_admin extends CI_Model
 	{
 		$this->db->select('xa.*,b.nama as nama_buat, c.nama as nama_update,d.nama as nama_group,d.list_access');
 		$this->db->from('admin AS xa');
-		$this->db->join('admin AS b', 'b.id_admin = xa.create_by', 'inner'); 
-		$this->db->join('admin AS c', 'c.id_admin = xa.update_by', 'inner'); 
+		$this->db->join('admin AS b', 'b.id_admin = xa.create_by', 'left'); 
+		$this->db->join('admin AS c', 'c.id_admin = xa.update_by', 'left'); 
 		$this->db->join('master_user_group AS d', 'd.id_group = xa.id_group', 'left');
 		$this->db->where('xa.id_admin',$id);
 		if($row){

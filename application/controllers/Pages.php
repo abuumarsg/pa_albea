@@ -81,9 +81,27 @@ class Pages extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('auth');
 	}
+	public function load_modal_delete()
+	{
+		if (!$this->input->is_ajax_request()) 
+		   redirect('not_found');
+		$id=$this->input->post('table');
+		if (!empty($id)) {
+			$data['modal']=$this->load->view('admin/temp/_delete_modal_confirm','',TRUE);
+			echo json_encode($data);
+		}else{
+			echo json_encode($this->messages->sessNotValidParam());
+		}
+	}
 	public function setting_admin(){
+		if($this->dtroot['adm']['level'] == 0){
+			$level=$this->libgeneral->getLevelAdminList();
+		}else{
+			$level=$this->libgeneral->getLevelAdminList(1);
+		}
 		$data=[
 			'access'=>$this->access,
+			'level'=>$level,
 		];
 		// $this->load->view('admin/temp/head');
 		$this->load->view('admin/temp/header', $this->dtroot);
