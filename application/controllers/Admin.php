@@ -89,13 +89,13 @@ class Admin extends CI_Controller
 						'user_group'=>$d->nama_group,
 						'user_group_val'=>$d->id_group,
 						'status'=>$d->status_adm,
-						'last_login'=>$this->formatter->getDateTimeMonthFormatUser($d->last_login),
-						'create_date'=>$this->formatter->getDateTimeMonthFormatUser($d->create_date),
-						'update_date'=>$this->formatter->getDateTimeMonthFormatUser($d->update_date),
+						'last_login'=>$this->libgeneral->getDateTimeMonthFormatUser($d->last_login),
+						'create_date'=>$this->libgeneral->getDateTimeMonthFormatUser($d->create_date),
+						'update_date'=>$this->libgeneral->getDateTimeMonthFormatUser($d->update_date),
 						'create_by'=>$d->create_by,
 						'update_by'=>$d->update_by,
-						'nama_buat'=>(!empty($d->nama_buat)) ? $d->nama_buat:$this->otherfunctions->getMark($d->nama_buat),
-						'nama_update'=>(!empty($d->nama_update))?$d->nama_update:$this->otherfunctions->getMark($d->nama_update)
+						'nama_buat'=>(!empty($d->nama_buat)) ? $d->nama_buat:$this->libgeneral->getMark($d->nama_buat),
+						'nama_update'=>(!empty($d->nama_update))?$d->nama_update:$this->libgeneral->getMark($d->nama_update)
 					];
 				}
 				echo json_encode($datax);
