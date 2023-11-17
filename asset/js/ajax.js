@@ -194,7 +194,7 @@ function submitAjax(urlx, modalx, formx, url_kode, idf_kode, usage,notif) {
 
 
 function loadModalAjax(urlx, modalx, datax, usage) {
-	Pace.restart();
+	// Pace.restart();
 	$.ajax({
 		url: urlx,
 		method: "POST",
@@ -216,20 +216,12 @@ function loadModalAjax(urlx, modalx, datax, usage) {
 				$('#data_form_table_u').val(datax['table_view']);
 				$('#data_file').val(datax['file']);
 			} else {
-				$("body").overhang({
-					type: "error",
-					message: fail + 'Invalid Parameter',
-					html: true
-				});
+				$.notify(data.msg, {position: "top center", className: "error"});
 			}
 			// console.clear();
 		},
 		error: function (data) {
-			$("body").overhang({
-				type: "error",
-				message: fail + 'Invalid Parameter',
-				html: true
-			});
+			$.notify(data.msg, {position: "top center", className: "error"});
 		}
 	});
 }

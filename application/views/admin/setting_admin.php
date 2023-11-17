@@ -12,7 +12,7 @@
         </ol>
       </div>
     </div>
-  </div><!-- /.container-fluid  testc update-->
+  </div>
 </section>
 <div class="content">
   <div class="container-fluid">
@@ -37,7 +37,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="pull-left">
-                  <button class="btn btn-success btn-flat" type="button" data-toggle="collapse" data-target="#add_acc"><i class="fa fa-plus"></i> Tambah Data</button>
+                  <button class="btn btn-success btn-flat" id="add_button" type="button" data-toggle="collapse" data-target="#add_adm"><i class="fa fa-plus"></i> Tambah Data</button>
                 </div>
               </div>
               <div class="col-sm-6">
@@ -47,94 +47,55 @@
                 </div>
               </div>
             </div>
-            <div class="collapse" id="add_acc">
-              <form id="form_add">
+            <?php if(in_array($access['l_ac']['add'], $access['access'])){?>
+              <div class="collapse" id="add_adm">
                 <br>
                 <div class="row">
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label>Kode</label>
-                      <input type="text" placeholder="Masukkan Kode" name="kode" id="kode_komponen" class="form-control" readonly="readonly">
-                    </div>
-                  </div>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <label>Nama Komponen</label>
-                      <input type="text" placeholder="Masukkan Nama Komponen" name="nama" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Sifat</label>
-                      <select class="form-control select2" name="sifat" id="jenis_komponen_add" style="width: 100%;"></select>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label>Select</label><br>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1" value="data">
-                          <label class="form-check-label">Data</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1" value="variable">
-                          <label class="form-check-label">Variable</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group" id="div_first_variable">
-                      <label>First Variable</label>
-                      <input type="text" placeholder="First Variable" name="variable_first" class="form-control" id="variable">
-                      <select class="form-control select2" name="data_first" style="width: 100%;display:none;" id="data_first"></select>
-                    </div>
-                  </div>
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label>Operation</label>
-                      <select class="form-control select2" name="operation" id="operation_add" style="width: 100%;"></select>
-                    </div>
-                  </div>
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label>Select</label><br>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio2" value="data">
-                          <label class="form-check-label">Data</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio2" value="variable">
-                          <label class="form-check-label">Variable</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group" id="div_second_variable">
-                      <label>Second Variable</label>
-                      <input type="text" placeholder="Second Variable" name="variable_second" class="form-control" id="variable">
-                      <select class="form-control select2" name="data_second" style="width: 100%;display:none;" id="data_second"></select>
-                    </div>
+                  <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                    <form id="form_add">
+                      <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" class="form-control" name="nama">
+                      </div>
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username">
+                      </div>
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password">
+                      </div>
+                      <div class="form-group">
+                        <label>Ulangi Password</label>
+                        <input type="password" class="form-control" name="retype_password">
+                      </div>
+                      <div class="form-group">
+                        <label>Level Admin</label>
+                        <?php
+                          $sel = [null];
+                          $exsel = array('class'=>'form-control select2','id'=>'data_level_add','required'=>'required','style'=>'width:100%');
+                          echo form_dropdown('level',$level,$sel,$exsel);
+                        ?>
+                      </div>
+                      <div class="form-group">
+                        <label>Pilih User Group</label>
+                        <select name="u_group" class="form-control select2" id="data_usergroup_add" style="width: 100%;" required="required"></select>
+                      </div>
+                      <div class="form-group">
+                        <button type="button" onclick="do_add()" class="btn btn-success"><i class="fa fa-floppy-o"></i> Simpan</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                <br>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="form-group pull-right">
-                      <button type="button" onclick="do_add()" id="btn_add" class="btn btn-success"><i class="fa fa-floppy-o"></i> Simpan</button>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-              </form>
-            </div>
+              </div>
+            <?php } ?>
             <table id="table_data" class="table table-bordered table-striped" style="width:100%">
               <thead>
                 <tr>
                   <th>No.</th>
                   <th>Nama</th>
-                  <th>Email</th>
+                  <th>Username</th>
                   <th>User Group</th>
                   <th>Last Login</th>
                   <th>Level Admin</th>
@@ -170,6 +131,7 @@
         </div>
         <br>
         <hr>
+        <input type="hidden" name="data_id_view">
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group row">
@@ -180,26 +142,26 @@
               <label class="col-sm-6 control-label">Username</label>
               <div class="col-sm-6" id="data_username_view"></div>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-sm-6 control-label">Email</label>
               <div class="col-sm-6" id="data_email_view"></div>
             </div>
             <div class="form-group row">
               <label class="col-sm-6 control-label">Alamat</label>
               <div class="col-sm-6" id="data_alamat_view"></div>
-            </div>
+            </div> -->
             <div class="form-group row">
               <label class="col-sm-6 control-label">Admin Level</label>
               <div class="col-sm-6" id="data_level_view"></div>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-sm-6 control-label">Nomor HP</label>
               <div class="col-sm-6" id="data_hp_view"></div>
             </div>
             <div class="form-group row">
               <label class="col-sm-6 control-label">Jenis Kelamin</label>
               <div class="col-sm-6" id="data_kelamin_view"></div>
-            </div>
+            </div> -->
             <div class="form-group row">
               <label class="col-sm-6 control-label">User Group</label>
               <div class="col-sm-6" id="data_group_view"></div>
@@ -253,8 +215,10 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2 class="modal-title">Edit Data <b class="text-muted header_data"></b></h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <form id="form_edit">
@@ -267,7 +231,7 @@
             <label>Username</label>
             <input type="text" placeholder="Masukkan Username" id="data_username_edit" name="username" value="" class="form-control" required="required">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Email</label>
             <input type="email" placeholder="Masukkan Email" id="data_email_edit" name="email" value="" class="form-control" required="required">
           </div>
@@ -278,7 +242,7 @@
           <div class="form-group">
             <label>Nomor HP</label>
             <input type="number" placeholder="Masukkan Nomor HP" id="data_nohp_edit" name="no_hp" value="" class="form-control" required="required">
-          </div>
+          </div> -->
 					<div class="form-group" id="div_level" style="display:none;">
 						<label>Level Admin</label>
 						<?php
@@ -307,8 +271,8 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2 class="modal-title">Reset Password <b class="text-muted header_data"></b></h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <form id="form_reset">
@@ -335,7 +299,7 @@
     </div>
   </div>
 </div>
-
+<div id="modal_delete_partial"></div>
 <script src="<?php echo base_url('asset/plugins/jquery/jquery.min.js')?>"></script>
 <script>
   var table="admin";
@@ -343,8 +307,8 @@
   $(document).ready(function(){
     // form_key("form_reset","btn_rst");
     // $('#add_button').click(function () {
-    //   getSelect2("<?php echo base_url('employee/mutasi_jabatan/employee')?>",'data_karyawan_add');
-    //   select_data('data_usergroup_add',url_select,'master_user_group','id_group','nama');
+    //   // getSelect2("<?php echo base_url('employee/mutasi_jabatan/employee')?>",'data_karyawan_add');
+    select_data('data_usergroup_add',"<?php echo base_url('global_control/select2_global');?>",'master_user_group','id_group','nama');
     // });
     getTableData();
   });
@@ -423,7 +387,7 @@
   }
   function edit_modal() {
     var id = $('input[name="data_id_view"]').val();
-    select_data('data_usergroup_edit',url_select,'master_user_group','id_group','nama');
+    select_data('data_usergroup_edit',"<?php echo base_url('global_control/select2_global');?>",'master_user_group','id_group','nama');
     var data={id_admin:id};
     var callback=getAjaxData("<?php echo base_url('admin/list_admin/view_one')?>",data); 
     $('#view').modal('toggle');
