@@ -52,6 +52,9 @@
 <!-- <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->
 <script src="<?php echo base_url('asset/js/notify.min.js')?>"></script>
 <script src="<?php echo base_url('asset/js/ajax.js')?>"></script>
+<script src="<?php echo base_url('asset/plugins/JsTree/dist/jstree.min.js');?>"></script>
+<script src="<?php echo base_url('asset/plugins/iconpicker/dist/js/fontawesome-iconpicker.js');?>"></script>
+<script src="<?php echo base_url('asset/plugins/validator/js/validator.js');?>"></script>
 </body>
 <script>
   $(function () {

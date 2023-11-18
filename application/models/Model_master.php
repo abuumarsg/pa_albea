@@ -51,4 +51,44 @@ class Model_master extends CI_Model
 		$query=$this->db->get_where('master_menu',['status'=>1,'id_menu !='=>0])->result();
 		return $query;
 	}
+	public function getListUserGroup()
+	{
+		$this->db->select('a.*');
+		$this->db->from('master_user_group a');
+		$this->db->order_by('create_date','DESC');
+		$query=$this->db->get()->result();
+		return $query;
+	}
+	public function getUserGroupOne($id)
+	{
+		$this->db->select('a.*,b.nama as nama_buat, c.nama as nama_update');
+		$this->db->from('master_user_group AS a');
+		$this->db->join('admin AS b', 'b.id_admin = a.create_by', 'left'); 
+		$this->db->join('admin AS c', 'c.id_admin = a.update_by', 'left'); 
+		$this->db->where('a.id_group',$id); 
+		$query=$this->db->get()->result();
+		return $query;
+	}
+	public function getListMenu()
+	{
+		$where=['a.id_menu !='=>0];
+		$this->db->select('a.*,b.nama as parent_name,');
+		$this->db->from('master_menu AS a');
+		$this->db->join('master_menu AS b', 'b.id_menu = a.parent', 'inner'); 
+		$this->db->order_by('a.create_date','DESC');
+		$this->db->where($where);
+		$query=$this->db->get()->result();
+		return $query;
+	}
+	public function getAllMenubyId($id){
+		$where=['a.id_menu'=>$id];
+		$this->db->select('a.*,b.nama as parent_name,c.nama as nama_buat, d.nama as nama_update');
+		$this->db->from('master_menu AS a');
+		$this->db->join('master_menu AS b', 'b.id_menu = a.parent', 'inner'); 
+		$this->db->join('admin AS c', 'c.id_admin = a.create_by', 'left'); 
+		$this->db->join('admin AS d', 'd.id_admin = a.update_by', 'left'); 
+		$this->db->where($where);
+		$query=$this->db->get()->result();
+		return $query;
+	}
 }

@@ -71,6 +71,31 @@ class Libgeneral {
         }
         return false;
     }
+    public function getDrawMenu2($data,$parent)
+    {
+        if (empty($data)) 
+            return null;
+        $new_val = null;
+        foreach ($data as $d)
+        {
+            if ($d->parent == $parent){
+                $new_val.= '<li data-jstree=\'{"icon":"'.$d->icon.'"}\' id="'.$d->id_menu.'"><a href="#">'.$d->nama.'</a>';
+                if ($this->getChildren2($data,$d->id_menu)){
+                    $new_val.= '<ul class="sub_menu">'.$this->getDrawMenu2($data,$d->id_menu).'</ul>';
+                }
+                $new_val.= "</li>";                  
+            }
+        }
+        return $new_val;
+    }
+    public function getChildren2($data,$id)
+    {
+        foreach ($data as $d) {
+            if ($d->parent == $id)
+                return true;            
+        }
+        return false;
+    }
     function getParseOneLevelVar($val)
     {
         $bag=[];
@@ -400,5 +425,41 @@ class Libgeneral {
     public function getGender($key)
     {
         return $this->getVarFromArrayKey($key,$this->getGenderList());
+    }
+	public function packingArray($arr,$param = ';')
+	{
+		if (empty($arr))
+			return null;		
+		$new_val=array_values(array_filter(array_unique($arr)));
+		return implode($param,$new_val);
+	}
+    public function addValueToArrayDb($arr,$val,$param)
+    {
+        if (empty($arr))
+            return $val;
+        if (empty($val) || empty($param))
+            return null;
+        $new_val=[];
+        $new_val=explode($param,$arr);
+        if (isset($new_val)) {
+            array_push($new_val,$val);
+        }
+        $new_val=array_values(array_filter(array_unique($new_val)));
+        return implode($param,$new_val);
+    }
+    public function removeValueToArrayDb($arr,$val,$param)
+    {
+        if (empty($val))
+            return $arr;
+        if (empty($arr) || empty($param))
+            return null;
+        $new_val=[];
+        $new_val=explode($param,$arr);
+        $pos=array_search($val, $new_val);
+        if (isset($new_val[$pos])) {
+            unset($new_val[$pos]);
+        }
+        $new_val=array_values(array_filter(array_unique($new_val)));
+        return implode($param,$new_val);
     }
 }

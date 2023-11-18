@@ -110,17 +110,22 @@ class Pages extends CI_Controller
 		$this->load->view('admin/temp/footer', $this->dtroot);
 	}
 	public function setting_user_group(){
-		// $this->load->view('admin/temp/head');
+		$data=[
+			'access'=>$this->access,
+			'hak_access'=>$this->model_master->getListAccess(true),
+		];
 		$this->load->view('admin/temp/header', $this->dtroot);
 		$this->load->view('admin/temp/sidebar', $this->dtroot);
-		$this->load->view('admin/setting_user_group');
+		$this->load->view('admin/setting_user_group', $data);
 		$this->load->view('admin/temp/footer', $this->dtroot);
 	}
 	public function setting_menu(){
-		// $this->load->view('admin/temp/head');
+		$data=array(
+			'access'=>$this->access,
+		);
 		$this->load->view('admin/temp/header', $this->dtroot);
 		$this->load->view('admin/temp/sidebar', $this->dtroot);
-		$this->load->view('admin/setting_menu');
+		$this->load->view('admin/setting_menu', $data);
 		$this->load->view('admin/temp/footer', $this->dtroot);
 	}
 }
