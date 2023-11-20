@@ -463,4 +463,62 @@ class Libgeneral {
         $new_val=array_values(array_filter(array_unique($new_val)));
         return implode($param,$new_val);
     }
+    public function getKaitanNilaiList()
+    {
+        $pack=[
+           '0'=>'Tidak Berkaitan',
+           '1'=>'Berkaitan'
+       ];
+       return $pack;
+    }
+    public function getKaitanNilai($key)
+    {
+        return $this->getVarFromArrayKey($key,$this->getKaitanNilaiList());
+    }
+    public function getJenisSatuanList()
+    {
+        $pack=[
+           '0'=>'Huruf',
+           '1'=>'Angka'
+       ];
+       return $pack;
+    }
+    public function getJenisSatuan($key)
+    {
+        return $this->getVarFromArrayKey($key,$this->getJenisSatuanList());
+    }
+    public function getJenisKpiList()
+    {
+        $pack=[
+           'WAJIB'=>'Wajib',
+           'TAMBAHAN'=>'Tambahan',
+           'RUTIN'=>'Rutin',
+       ];
+       return $pack;
+    }
+    public function getJenisKpi($key)
+    {
+        return $this->getVarFromArrayKey($key,$this->getJenisKpiList());
+    }
+    public function getSifatKpiList()
+    {
+        $pack=[
+           'MIN'=>'Minimal',
+           'MAX'=>'Maksimal'
+       ];
+       return $pack;
+    }
+    public function getSifatKpi($key)
+    {
+        return $this->getVarFromArrayKey($key,$this->getSifatKpiList());
+    }
+	public function poin_max_range()
+	{
+		return 10;
+	}
+	public function column_value_max_range()
+	{
+		//jumlah penilaian
+		return 3;
+	}
 }

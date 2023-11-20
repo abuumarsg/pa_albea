@@ -44,21 +44,6 @@
   </aside>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="<?php echo base_url('asset/plugins/jquery/jquery.min.js')?>"></script>
- <script type="text/javascript">
- 	$(document).ready(function(){
-    activeFunc();
- 	});
-  function activeFunc(){
-    $("li").removeClass("active current-page");
-      var currentSelectedli = $("a.router-link-exact-active").parent('li');
-      currentSelectedli.addClass("current-page");
-      currentSelectedli.siblings().removeClass("active current-page");
-      var parentLI =currentSelectedli.parent("ul").parent("li");
-      if(parentLI.length!=0){
-          parentLI.addClass("active");
-      }
-  }
-</script>
   <div class="content-wrapper">
     <!-- <div class="content-header">
       <div class="container-fluid">

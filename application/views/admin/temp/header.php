@@ -16,7 +16,7 @@
   <link rel="icon" href="<?php echo base_url('asset/dist/img/AdminLTELogo.png');?>" type="image/png">
   <!-- <link rel="stylesheet" href="<?php //echo base_url('plugins/overlayScrollbars/css/OverlayScrollbars.min.css');?>"> -->
 </head>
-<body class="hold-transition sidebar-miniayout-fixed layout-navbar-fixed layout-footer-fixed" ">l
+<body class="hold-transition sidebar-miniayout-fixed layout-navbar-fixed layout-footer-fixed" ">
 <!-- <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"> -->
   
 <div class="wrapper">

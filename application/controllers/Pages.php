@@ -131,13 +131,32 @@ class Pages extends CI_Controller
 		$this->load->view('admin/setting_menu', $data);
 		$this->load->view('admin/temp/footer', $this->dtroot);
 	}
+	//======================================================================== MASTER PENILAIAN ======================================================
+	public function master_jenis_batasan_poin(){
+		$nama_menu="master_jenis_batasan_poin";
+		if (in_array($nama_menu, $this->link)) {
+			$data = [
+				'access'=>$this->access,
+				'kaitan'=>$this->libgeneral->getKaitanNilaiList(),
+				'jenis_satuan'=>$this->libgeneral->getJenisSatuanList(),
+				'jenis_kpi'=>$this->libgeneral->getJenisKpiList(),
+				'sifat'=>$this->libgeneral->getSifatKpiList(),
+			];
+			$this->load->view('admin/temp/header', $this->dtroot);
+			$this->load->view('admin/temp/sidebar', $this->dtroot);
+			$this->load->view('admin/penilaian/master_jenis_batasan_poin', $data);
+			$this->load->view('admin/temp/footer', $this->dtroot);
+		}else{
+			redirect('pages/not_found');
+		}
+	}
 	public function master_aspek(){
 		$data=array(
 			'access'=>$this->access,
 		);
 		$this->load->view('admin/temp/header', $this->dtroot);
 		$this->load->view('admin/temp/sidebar', $this->dtroot);
-		$this->load->view('admin/master_aspek', $data);
+		$this->load->view('admin/penilaian/master_aspek', $data);
 		$this->load->view('admin/temp/footer', $this->dtroot);
 	}
 }

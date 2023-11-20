@@ -430,6 +430,19 @@ class Codegenerator{
         return $this->logicGenerator('master_komponen', 'kode', 'id', 'KMP','simpleCode');
     }
     //===SECURITY END===//
+    //========================== PENILAIAN KINERJA =========================
+    public function kodeBatasanPoin()
+    {
+        return $this->logicGenerator('master_jenis_batasan_poin', 'kode_batasan_poin', 'id_batasan_poin', 'BP','kode_master');
+    }
+    public function kodeKpi()
+    {
+        return $this->logicGenerator('master_kpi', 'kode_kpi', 'id_kpi', 'KPI','kode_master');
+    }
+    public function kodeAspek()
+    {
+        return $this->logicGenerator('master_aspek_sikap', 'kode_aspek', 'id_aspek', 'ASP','kode_master');
+    }
 
 
 }
