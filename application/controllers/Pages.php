@@ -57,6 +57,9 @@ class Pages extends CI_Controller
 	public function index(){
 		redirect('pages/dashboard');
 	}
+	public function menu(){
+		$this->load->view('admin/index');
+	}
 	public function dashboard(){
 		// $this->load->view('admin/temp/head');
 		$this->load->view('admin/temp/header',$this->dtroot);
@@ -126,6 +129,15 @@ class Pages extends CI_Controller
 		$this->load->view('admin/temp/header', $this->dtroot);
 		$this->load->view('admin/temp/sidebar', $this->dtroot);
 		$this->load->view('admin/setting_menu', $data);
+		$this->load->view('admin/temp/footer', $this->dtroot);
+	}
+	public function master_aspek(){
+		$data=array(
+			'access'=>$this->access,
+		);
+		$this->load->view('admin/temp/header', $this->dtroot);
+		$this->load->view('admin/temp/sidebar', $this->dtroot);
+		$this->load->view('admin/master_aspek', $data);
 		$this->load->view('admin/temp/footer', $this->dtroot);
 	}
 }
