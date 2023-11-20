@@ -19,8 +19,8 @@
 <script src="<?php echo base_url('asset/plugins/jquery-ui/jquery-ui.min.js')?>"></script>
 <script src="<?php echo base_url('asset/plugins/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 <script src="<?php echo base_url('asset/dist/js/adminlte.js')?>"></script>
-<script src="<?php echo base_url('asset/plugins/chart.js/Chart.min.js')?>"></script>
-<script src="<?php echo base_url('asset/dist/js/pages/dashboard3.js')?>"></script>
+<!-- <script src="<?php echo base_url('asset/plugins/chart.js/Chart.min.js')?>"></script> -->
+<!-- <script src="<?php echo base_url('asset/dist/js/pages/dashboard3.js')?>"></script> -->
 <!-- <script src="<?php //echo base_url('asset/plugins/sparklines/sparkline.js')?>"></script> -->
 <script src="<?php echo base_url('asset/plugins/jqvmap/jquery.vmap.min.js')?>"></script>
 
@@ -55,6 +55,7 @@
 <script src="<?php echo base_url('asset/plugins/JsTree/dist/jstree.min.js');?>"></script>
 <script src="<?php echo base_url('asset/plugins/iconpicker/dist/js/fontawesome-iconpicker.js');?>"></script>
 <script src="<?php echo base_url('asset/plugins/validator/js/validator.js');?>"></script>
+<script src="<?php echo base_url('asset/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js');?>"></script>
 </body>
 <script>
   $(function () {

@@ -55,8 +55,9 @@ class Libgeneral {
 
                     }
                     $new_val .= '<li class="nav-item'.$mo.'"> <a href="'.$urlx.'" class="nav-link'.$class.'">'.$name.'</a>';
-                    if ($this->getMenuAdminChildren($menu, $d->id_menu))                                   
-                    $new_val.= '<ul class="nav nav-treeview">'.$this->drawMenuAdmin($your_menu,$menu,$d->id_menu,$url).'</ul>'; 
+                    if ($this->getMenuAdminChildren($menu, $d->id_menu)){
+                        $new_val.= '<ul class="nav nav-treeview">'.$this->drawMenuAdmin($your_menu,$menu,$d->id_menu,$url).'</ul>';
+                    }
                     $new_val.= "</li>";  
                 }
             }
