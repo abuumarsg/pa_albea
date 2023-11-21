@@ -521,4 +521,16 @@ class Libgeneral {
 		//jumlah penilaian
 		return 3;
 	}
+    public function getYesNoList()
+    {
+        $pack=[
+            1=>'Ya',
+            0=>'Tidak',
+        ];
+        return $pack;
+    }
+    public function getYesNo($key)
+    {
+        return $this->getVarFromArrayKey($key,$this->getYesNoList());
+    }
 }

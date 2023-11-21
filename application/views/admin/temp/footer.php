@@ -71,6 +71,7 @@
   <script src="<?php echo base_url('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')?>"></script>
   <script src="<?php echo base_url('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')?>"></script>
   <script src="<?php echo base_url('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')?>"></script>
+  <script src="<?php echo base_url('asset/plugins/pace/pace.min.js');?>"></script>
   <script src="<?php echo base_url('asset/js/notify.min.js')?>"></script>
   <script src="<?php echo base_url('asset/js/ajax.js')?>"></script>
 </body>
@@ -91,6 +92,11 @@
     // });
   });
   $(document).ready(function () {
+    // form_property();
+		$('.select2').select2({
+			placeholder: 'Pilih Data',
+			allowClear: true,
+		});
     // $('.nav-item').click(function () {
     //   $('.sidebar-mini').removeClass('sidebar-open');
     //   $('.sidebar-mini').addClass('sidebar-closed sidebar-collapse');

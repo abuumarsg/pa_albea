@@ -3,12 +3,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1><i class="fas fa-cogs"></i> SETTING</h1>
+        <h1><i class="fa fa-database"></i> Master Data</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active"><i class="fas fa-cogs"></i> Master Jenis Batasan Poin</li>
+          <li class="breadcrumb-item active"><i class="fa fa-database"></i> Master Jenis Batasan Poin</li>
         </ol>
       </div>
     </div>
@@ -61,14 +61,17 @@
                         <input type="text" placeholder="Masukkan Nama Jenis Batasan Poin" name="nama" id="data_name_add" class="form-control" required="required">
                       </div>
                       <div class="form-group">
-                        <label class="checkbox">Lebih Dari Batasan Maksimal Poin
+                        <label class="checkbox">
                           <input type="checkbox" name="lebih_max" id="data_lebih_max_add" value="1">
+                          &nbsp;Lebih Dari Batasan Maksimal Poin
                           <span class="checkmark"></span>
                         </label>
                       </div>
-                      <div class="panel panel-primary">
-                        <div class="panel-heading">Batasan Poin</div>
-                        <div class="panel-body">
+                      <div class="card card-info">
+                        <div class="card-header">
+                          <h3 class="card-title">Batasan Poin</h3>
+                        </div>
+                        <div class="card-body">
                           <p class="text-muted" style="padding-left: 10px;">Kosongkan jika tidak ada poin dan satuan!</p>
                           <?php for ($i=1; $i <= $this->libgeneral->poin_max_range(); $i++) { ?>
                             <div class="row">
@@ -201,41 +204,48 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
+        <div class="callout callout-danger">
+          <b><i class="fa fa-warning"></i> Peringatan</b><br>
+          Edit data master KPI akan berpengaruh pada <b>Rancangan KPI</b> dan <b>Agenda KPI <b class="err">(yang belum dilakukan Validasi)</b></b>. Pastikan data diedit dengan benar!
+        </div>
         <form id="form_edit">
-          <input type="hidden" id="data_id_edit" name="id" value="">
-          <input type="hidden" id="data_parent_old_edit" name="parent_old" value="">
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group row">
-                <label>Nama Menu</label>
-                <input type="text" placeholder="Masukkan Nama Menu" id="data_name_edit" name="nama"
-                  class="form-control field" required="required">
+              <input type="hidden" id="data_id_edit" name="id" value="">
+              <input type="hidden" id="data_kode_edit_old" name="kode_old" value="">
+              <div class="form-group">
+                <label>Kode Jenis Batasan Poin</label>
+                <input type="text" placeholder="Masukkan Kode Jenis Batasan Poin" id="data_kode_edit" name="kode" value="" class="form-control" required="required" readonly="readonly">
               </div>
-              <div class="form-group row">
-                <label>URL</label>
-                <input type="text" placeholder="Masukkan URL" id="data_url_edit" name="url" class="form-control field"
-                  required="required">
+              <div class="form-group">
+                <label>Nama Jenis Batasan Poin</label>
+                <input type="text" placeholder="Masukkan Nama Jenis Batasan Poin" id="data_name_edit" name="nama" value="" class="form-control" required="required">
               </div>
-              <div class="form-group row">
-                <label>Sub URL</label>
-                <p class="text-muted">Pisahkan Dengan Tanda <b>';'</b></p>
-                <textarea id="data_suburl_edit" name="sub_url" class="form-control field" required="required"
-                  placeholder="Masukkan Sub URL"></textarea>
+              <div class="form-group">
+                <label class="checkbox">
+                  <input type="checkbox" name="lebih_max" id="data_lebih_max_edit" value="1"> Lebih Dari Batasan Maksimal Poin
+                  <span class="checkmark"></span>
+                </label>
               </div>
-              <div class="form-group row">
-                <label>Parent</label>
-                <select name="parent" class="form-control select2" id="data_parent_edit" style="width: 100%;"></select>
-              </div>
-              <div class="form-group row">
-                <label>Sequence</label>
-                <input type="number" placeholder="Masukkan Sequence / Urutan Menu" id="data_sequence_edit" name="sequence"
-                  class="form-control field" required="required">
-              </div>
-              <div class="form-group row">
-                <label>Icon</label>
-                <h4 id="data_icon_view_edit"></h4>
-                <input type="text" min="1" placeholder="Masukkan Icon Menu" id="data_icon_edit" name="icon"
-                  class="form-control icon" readonly="readonly">
+              <div class="card card-primary">
+                <div class="card-header">Batasan Poin KPI</div>
+                <div class="card-body">
+                <p class="text-muted" style="padding-left: 10px;">Kosongkan jika tidak ada poin dan satuan!</p>
+                <?php 
+                for ($i=1; $i <= $this->libgeneral->poin_max_range(); $i++) { 
+                ?>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Poin <?php echo $i; ?></label>
+                    <input type="text" placeholder="Masukkan Poin <?php echo $i; ?>" name="poin_<?php echo $i; ?>" id="data_poin_<?php echo $i; ?>_edit" class="form-control">
+                  </div>
+                  <div class="col-md-8">
+                    <label>Satuan <?php echo $i; ?></label>
+                    <input type="text" placeholder="Masukkan Satuan <?php echo $i; ?>" name="satuan_<?php echo $i; ?>" id="data_satuan_<?php echo $i; ?>_edit" class="form-control">
+                  </div>
+                </div>
+                <?php } ?>
+                </div>
               </div>
             </div>
           </div>
@@ -282,7 +292,7 @@
     });
 
     $('#btn_add_collapse').click(function(){
-      select_data('data_departement_add',url_select,'master_departement','kode_departement','nama');
+      // select_data('data_departement_add',url_select,'master_departement','kode_departement','nama');
     })
   });
   function refreshCode() {
@@ -311,7 +321,7 @@
     $('#data_update_by_view').html(callback['nama_update']);
   }
   function edit_modal() {
-    select_data('data_departement_edit',url_select,'master_departement','kode_departement','nama');
+    // select_data('data_departement_edit',url_select,'master_departement','kode_departement','nama');
     var id = $('input[name="data_id_view"]').val();
     var data={id_batasan_poin:id};
     var callback=getAjaxData("<?php echo base_url('master/master_jenis_batasan_poin/view_one')?>",data); 
@@ -356,7 +366,7 @@
   function do_edit(){
     if($("#form_edit")[0].checkValidity()) {
       submitAjax("<?php echo base_url('master/edt_jenis_batasan_poin')?>",'edit','form_edit',null,null);
-      $('#table_data').DataTable().ajax.reload(function (){Pace.restart();},false);
+      $('#table_data').DataTable().ajax.reload(function (){Pace.restart();});
     }else{
       notValidParamx();
     } 
@@ -364,7 +374,7 @@
   function do_add(){
     if($("#form_add")[0].checkValidity()) {
       submitAjax("<?php echo base_url('master/add_jenis_batasan_poin')?>",null,'form_add',null,null);
-      $('#table_data').DataTable().ajax.reload(function (){Pace.restart();},false);
+      $('#table_data').DataTable().ajax.reload(function (){Pace.restart();});
       $('#form_add')[0].reset();
       refreshCode();
     }else{

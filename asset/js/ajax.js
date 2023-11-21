@@ -500,11 +500,11 @@ function form_property() {
 			this.value = 'Rp. 0';
 		}
 	});
-	// $('input[type=checkbox],input[type=radio]').iCheck({
-	// 	checkboxClass: 'icheckbox_square-blue',
-	// 	radioClass: 'iradio_square-blue',
-	// 	increaseArea: '20%'
-	// });
+	$('input[type=checkbox],input[type=radio]').iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue',
+		increaseArea: '20%'
+	});
 	$('input[type=radio]').iCheck({
 		checkboxClass: 'icheckbox_square-blue',
 		radioClass: 'iradio_square-blue',

@@ -68,3 +68,9 @@
 	text-align: center;
 	word-wrap: break-word;
 }
+input[type="checkbox"] {
+	width:20px;
+	height:20px;
+	padding-bottom: 9px;
+	vertical-align: middle;
+}

@@ -7,16 +7,20 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="<?php echo base_url('asset/plugins/fontawesome-free/css/all.min.css')?>">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="<?php echo base_url('asset/dist/css/adminlte.min.css')?>">
+  <!-- <link rel="stylesheet" href="<?php echo base_url('asset/dist/css/adminlte.min.css')?>"> -->
+  <link rel="stylesheet" href="<?php echo base_url('asset/dist/css/adminlte.css')?>">
   <link rel="stylesheet" href="<?php echo base_url('asset/dist/css/style.css')?>">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
   <link rel="stylesheet" href="<?php echo base_url('asset/plugins/JsTree/dist/themes/default/style.min.css');?>">
   <link rel="stylesheet" href="<?php echo base_url('asset/plugins/iconpicker/dist/css/fontawesome-iconpicker.min.css');?>">
+  <link rel="stylesheet" href="<?php echo base_url('asset/plugins/pace/pace.css');?>">
+  <link rel="stylesheet" href="<?php echo base_url('asset/plugins/select2/css/select2.min.css');?>">
+  <link rel="stylesheet" href="<?php echo base_url('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css');?>">
   <link rel="icon" href="<?php echo base_url('asset/dist/img/AdminLTELogo.png');?>" type="image/png">
   <!-- <link rel="stylesheet" href="<?php //echo base_url('plugins/overlayScrollbars/css/OverlayScrollbars.min.css');?>"> -->
 </head>
-<body class="hold-transition sidebar-miniayout-fixed layout-navbar-fixed layout-footer-fixed" ">
+<body class="hold-transition sidebar-miniayout-fixed layout-navbar-fixed layout-footer-fixed">
 <!-- <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"> -->
   
 <div class="wrapper">

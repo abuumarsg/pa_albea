@@ -150,6 +150,24 @@ class Pages extends CI_Controller
 			redirect('pages/not_found');
 		}
 	}
+	public function master_kpi(){
+		$nama_menu="master_kpi";
+		if (in_array($nama_menu, $this->link)) {
+			$data=['access'=>$this->access,
+				'kaitan'=>$this->libgeneral->getKaitanNilaiList(),
+				'jenis_satuan'=>$this->libgeneral->getJenisSatuanList(),
+				'jenis_kpi'=>$this->libgeneral->getJenisKpiList(),
+				'sifat'=>$this->libgeneral->getSifatKpiList(),
+				'yesno'=>$this->libgeneral->getYesNoList(),
+			];
+			$this->load->view('admin/temp/header', $this->dtroot);
+			$this->load->view('admin/temp/sidebar', $this->dtroot);
+			$this->load->view('admin/penilaian/master_kpi', $data);
+			$this->load->view('admin/temp/footer', $this->dtroot);
+		}else{
+			redirect('pages/not_found');
+		}
+	}
 	public function master_aspek(){
 		$data=array(
 			'access'=>$this->access,
