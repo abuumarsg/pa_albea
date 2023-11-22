@@ -41,13 +41,22 @@
                     }
                     if (in_array('EXP', $access['access'])) {
                       echo '<div class="btn-group">
-                          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><i class="fas fa-file-excel-o"></i> Export
-                          <span class="fa fa-caret-down"></span></button>
-                          <ul class="dropdown-menu">
-                            <li><a href="'.base_url('master/export_kpi').'">Export Template</a></li>
-                            <li><a href="'.base_url('master/export_data_kpi').'">Export Data</a></li>
-                          </ul>
-                        </div>';
+                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown"><i class="fa fa-file-excel"></i> Export 
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                          <a class="dropdown-item" href="'.base_url('master/export_kpi').'">Export Template</a>
+                          <a class="dropdown-item" href="'.base_url('master/export_data_kpi').'">Export Data</a>
+                        </div>
+                      </div>';
+                      // echo '<div class="btn-group">
+                      //     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><i class="fas fa-file-excel-o"></i> Export
+                      //     <span class="fa fa-caret-down"></span></button>
+                      //     <ul class="dropdown-menu">
+                      //       <li><a href="'.base_url('master/export_kpi').'">Export Template</a></li>
+                      //       <li><a href="'.base_url('master/export_data_kpi').'">Export Data</a></li>
+                      //     </ul>
+                      //   </div>';
                     }
                   ?>
                 </div>
@@ -390,6 +399,7 @@
   var table="master_kpi";
   var column="id_kpi";
   $(document).ready(function(){
+    // $('#uploadBtnx').hide();
     $('#btn_add_collapse').click(function(){
       select_data('data_bagian_add',url_select,'master_bagian','kode_bagian','nama');
       select_data('data_cara_menghitung_add',url_select,'master_rumus','function','nama');

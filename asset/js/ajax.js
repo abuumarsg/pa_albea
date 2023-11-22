@@ -974,11 +974,7 @@ function pathFile(idf, idt, fext, btnx) {
 	if ($.inArray($(idf).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
 		$(idf).val('');
 		$(idt).val('');
-		$("body").overhang({
-			type: "error",
-			message: fail + 'File Harus Bertipe : ' + fileExtension.join(", "),
-			html: true
-		});
+		$.notify('File Harus Bertipe : ' + fileExtension.join(", "), {position: "top center", className: "error"});
 		$(btnx).attr('disabled', 'disabled');
 	} else {
 		$(btnx).removeAttr('disabled');
